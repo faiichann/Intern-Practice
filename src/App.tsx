@@ -5,6 +5,11 @@ import{ useEffect, useState, useMemo, useCallback} from 'react';
 import Home from 'Home';
 import { useCounter } from 'useCounter';
 import { useCalculate } from 'useCalculate';
+import { useNumpad } from 'useNumpad';
+
+import { AppProvider } from 'contexts/AppContext';
+import  StudentBoard  from 'components/StudentBoard';
+import StudentInput from 'components/StudentInput';
 
 function App() {
   // const [homeName, setHomeName] = useState<string>("");
@@ -24,17 +29,17 @@ function App() {
   //   setCount((prevCount) => prevCount + 1);
   // }, []);
 
-  const renderList = useMemo(() => {
-    console.log("render list");
-    return Array.from(Array(100).keys()).map((key) => {
-      return <h3 key={key}> {key} count</h3>;
-    });
-  }, []);
+  // const renderList = useMemo(() => {
+  //   console.log("render list");
+  //   return Array.from(Array(100).keys()).map((key) => {
+  //     return <h3 key={key}> {key} count</h3>;
+  //   });
+  // }, []);
 
-  const { increaseCounter, decreaseCounter, resetCounter, counterComponet} = useCounter();
+  // const { increaseCounter, decreaseCounter, resetCounter, counterComponet} = useCounter();
 
-  const { Calculator, plusCal, minusCal, multiplyCal,
-     DivideCal, resetCal,AllCalculator, EvalCal } = useCalculate();
+  // const { Calculator, plusCal, minusCal, multiplyCal,
+  //    DivideCal, resetCal,AllCalculator, EvalCal } = useCalculate();
   return (
     <div className="App">
       {/* <Home window={5} homeName={homeName}/>
@@ -42,7 +47,7 @@ function App() {
      <button onClick={() => setIsClose((prevState) => !prevState)}>Close</button>
 
      <hr/> */}
-     <div style={{alignItems: 'center'}}>
+     {/* <div style={{alignItems: 'center'}}>
      <h1 className="rgb">โปรแกรมคิดเลข </h1>
      { Calculator }
      <button onClick={plusCal}>Plus</button> 
@@ -71,7 +76,11 @@ function App() {
         {/* <button onClick={decrement}>-</button>
         <button onClick={incrementOtherCounter}>not use useCallback</button> */}
       </>
-
+      <hr/>
+        <AppProvider>
+          <StudentBoard/>
+          <StudentInput/>
+        </AppProvider>
       
     </div>
   );
