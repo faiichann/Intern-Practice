@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export const useNumpad = () => {
     const [input, setInput] = useState<string>(" ");
+    const [answer, setAnswer] = useState<number>(0);
 
     const handleClick =  useCallback((e) =>{
         setInput(e.target.value);
@@ -11,15 +12,17 @@ export const useNumpad = () => {
 
     const handleClear =  useCallback(() =>{
         setInput('');
+        setAnswer(0);
     },[])
 
     const handleAnswer = useCallback(() =>{
-        setInput(eval(input));
+        setAnswer(eval(input));
     },[input])
 
     useEffect(() => {
         console.log(input)
-    },[input])
+        console.log(answer)
+    },[input,answer])
 
     const Numpad = useMemo(() =>
     {
@@ -44,5 +47,5 @@ export const useNumpad = () => {
         </div>
     },[handleClick, input, handleAnswer, handleClear])
 
-    return{Numpad, handleClick}
+    return{Numpad, handleClick, input, answer, handleAnswer, handleClear}
 }
