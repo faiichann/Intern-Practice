@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export const useNumpad = () => {
-    const [input, setInput] = useState<string>("");
-    const [answer, setAnser] = useState<number>(0);
+    const [input, setInput] = useState<string>(" ");
 
-    const handleClick =  useCallback(() =>{
-        setInput((prev : string) => prev + input);
+    const handleClick =  useCallback((e) =>{
+        setInput(e.target.value);
+        setInput((prev : string) => input + prev);
         console.log(input)
     },[input])
 
@@ -14,7 +14,7 @@ export const useNumpad = () => {
     },[])
 
     const handleAnswer = useCallback(() =>{
-        setAnser(eval(input));
+        setInput(eval(input));
     },[input])
 
     useEffect(() => {
@@ -25,9 +25,24 @@ export const useNumpad = () => {
     {
         return<div>
             <h4>Input: {input}</h4>
-            <button value={input} onClick={handleClick}>1</button>
+            <button value="0" onClick={handleClick}>0</button>
+            <button value="1" onClick={handleClick}>1</button>
+            <button value="2" onClick={handleClick}>2</button>
+            <button value="3" onClick={handleClick}>3</button>
+            <button value="4" onClick={handleClick}>4</button>
+            <button value="5" onClick={handleClick}>5</button>
+            <button value="6" onClick={handleClick}>6</button>
+            <button value="7" onClick={handleClick}>7</button>
+            <button value="8" onClick={handleClick}>8</button>
+            <button value="9" onClick={handleClick}>9</button><br/>
+            <button value="+" onClick={handleClick}>+</button>
+            <button value="-" onClick={handleClick}>-</button>
+            <button value="*" onClick={handleClick}>x</button>
+            <button value="/" onClick={handleClick}>/</button><br/>
+            <button onClick={handleClear}>Ac</button>
+            <button onClick={handleAnswer}>=</button>
         </div>
-    },[])
+    },[handleClick, input, handleAnswer, handleClear])
 
     return{Numpad, handleClick}
 }

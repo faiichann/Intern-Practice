@@ -38,8 +38,10 @@ function App() {
 
   // const { increaseCounter, decreaseCounter, resetCounter, counterComponet} = useCounter();
 
-  // const { Calculator, plusCal, minusCal, multiplyCal,
-  //    DivideCal, resetCal,AllCalculator, EvalCal } = useCalculate();
+  const { Calculator, plusCal, minusCal, multiplyCal,
+     DivideCal, resetCal,AllCalculator, EvalCal } = useCalculate();
+
+  const {Numpad, handleClick } = useNumpad ();
   return (
     <div className="App">
       {/* <Home window={5} homeName={homeName}/>
@@ -47,7 +49,7 @@ function App() {
      <button onClick={() => setIsClose((prevState) => !prevState)}>Close</button>
 
      <hr/> */}
-     {/* <div style={{alignItems: 'center'}}>
+     <div style={{alignItems: 'center'}}>
      <h1 className="rgb">โปรแกรมคิดเลข </h1>
      { Calculator }
      <button onClick={plusCal}>Plus</button> 
@@ -58,24 +60,28 @@ function App() {
      </div>
      <hr/>
      
-     {counterComponet}
+     {/* {counterComponet}
      <button onClick = {increaseCounter}> + </button>
      <button onClick = {decreaseCounter}> - </button>
-     <button onClick = {resetCounter}> reset </button>
+     <button onClick = {resetCounter}> reset </button> */}
+
      <hr/>
      {AllCalculator}
      <button onClick = {EvalCal}> Calculate </button>
-     {/* <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+     <hr/>
+     {Numpad}
+{/* 
+     <button onClick={() => setCount((prevCount) => prevCount + 1)}>
         count ++++
       </button>
       <h2>Count: {count}</h2>
-      {renderList} */}
+      {renderList}
       <>
-        {/* <h2>Count: {count}</h2>
-         */}
-        {/* <button onClick={decrement}>-</button>
-        <button onClick={incrementOtherCounter}>not use useCallback</button> */}
-      </>
+        <h2>Count: {count}</h2>
+        
+        <button onClick={decrement}>-</button>
+        <button onClick={incrementOtherCounter}>not use useCallback</button>
+      </> */}
       <hr/>
         <AppProvider>
           <StudentBoard/>
