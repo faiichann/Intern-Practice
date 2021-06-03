@@ -9,7 +9,7 @@ const NumpadComponent = (() =>{
         text-align: center;
     `
     const Card = styled.div`
-        box-shadow: #0000004c 0px 19px 38px, #00000038 0px 15px 12px;
+        box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
         max-width: 360px;
         margin: 10px;
         padding: 5px;
@@ -27,7 +27,9 @@ const NumpadComponent = (() =>{
         border-radius: 20px;
         color: #e44c60;
         font-size: 22px;
+        box-shadow: rgba(32, 32, 250, 0.05) 0px 4px 16px, rgba(60, 60, 253, 0.05) 0px 8px 32px;
     `
+
     const Button = styled.button`
         background: #e9ccd6;
         border-radius: 50%;
