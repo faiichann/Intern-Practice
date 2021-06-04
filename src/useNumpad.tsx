@@ -5,8 +5,7 @@ export const useNumpad = () => {
     const [answer, setAnswer] = useState<number>(0);
 
     const handleClick =  useCallback((e) =>{
-        setInput(e.target.value);
-        setInput((prev : string) => input + prev);
+        setInput((prev : string ) => prev +  e.target.value);
         console.log(input)
     },[input])
 
@@ -20,8 +19,10 @@ export const useNumpad = () => {
     },[input])
 
     useEffect(() => {
-        console.log(input)
-        console.log(answer)
+        if (input !== '0' && answer !== 0){
+            console.log(input)
+            console.log(answer)
+        }
     },[input,answer])
 
     const Numpad = useMemo(() =>
